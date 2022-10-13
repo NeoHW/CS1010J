@@ -26,88 +26,100 @@ class Minesweeper {
     } else {
       playLevelThree(sc);
     }
-
-    // Note the expected output format for each line, e.g.
-    // 1<space>2<space>1<space>9<space>5<space>3<space>3<space>5
   }
 
   public static void playLevelOne(Scanner sc) {
     System.out.println("Enter the " + 8 + " x " + 8 + " board:");
-    char[][] mtx = new char[8][8];
+    char[][] mtx = new char[8][8]; //
     readBoard(sc, mtx);
     int[][] output = new int[8][8];
     for(int i = 0; i < mtx.length; i++) {
-      for( int j = 0; j < mtx.length; j++) {
+      for(int j = 0; j < mtx[0].length; j++) {
         output[i][j] = computeScore(mtx,i,j);
       }
     }
     printBoard(output);
   }
 
+  // error here
   public static void playLevelTwo(Scanner sc) {
-    return;
+    System.out.println("Enter the " + 12 + " x " + 16 + " board:");
+    char[][] mtx = new char[12][16]; //
+    readBoard(sc, mtx);
+    int[][] output = new int[12][16];
+    for(int i = 0; i < mtx.length; i++) {
+      for(int j = 0; j < mtx[0].length; j++) {
+        output[i][j] = computeScore(mtx,i,j);
+      }
+    }
+    printBoard(output);
   }
 
   public static void playLevelThree(Scanner sc) {
-    return;
+    System.out.println("Enter the " + 16 + " x " + 30 + " board:");
+    char[][] mtx = new char[16][30]; //
+    readBoard(sc, mtx);
+    int[][] output = new int[16][30];
+    for(int i = 0; i < mtx.length; i++) {
+      for(int j = 0; j < mtx[0].length; j++) {
+        output[i][j] = computeScore(mtx,i,j);
+      }
+    }
+    printBoard(output);
   }
 
-  // Errors here
-  // Learn how to convert String into Char Matrix!!
   public static void readBoard(Scanner sc, char[][] mtx) {
     for(int i = 0; i < mtx.length; i++) {
-      String s = sc.nextLine();
-      for(int j = 0; j < mtx.length; j++) {
-        mtx[i][j] = s.charAt(j);
+      String input = sc.next();
+      for (int j = 0; j < input.length(); j++) {
+        mtx[i][j] = input.charAt(j);
       }
     }
   }
 
+  // Compute number of mines surronding a single tile
   public static int computeScore(char[][] mtx, int i, int j) {
     if(mtx[i][j] == '*') {
       return 9;
     }
     int count = 0;
-    int y = -1;
-    int x = -1;
-    boolean yEnd = false;
-    boolean xEnd = false;
 
-    while(y < 2 && yEnd == false) {
-      if(i == 0) {
+    for(int y = -1; y < 2; y++) {
+      // if first row
+      if(i == 0 && y == -1) {
         y = 0;
       }
-
-      if(i == 7 && y == 1) {
-        yEnd = true;
+      // if exceed last row
+      if(i == mtx.length-1 && y == 1) {
+        break;
       }
-
-      while (x < 2 && xEnd == false) {
-        if(j == 0) {
-          x = 0; 
-        }  
-        if(j == 7 && x == 1) {
-          xEnd = true;
+      
+      for(int x = -1; x < 2; x++) {
+        // if first col
+        if(j == 0 && x == -1) {
+          x = 0;
+        }
+        // if exceed last col
+        if(j == mtx[i].length-1 && x == 1) {
+          break;
         }
         if(mtx[i+y][x+j] == '*') {
           count++;
         }
-        x++;
       }
-      if(mtx[i+y][x+j] == '*') {
-        count++;
-      }
-      y++;
     }
     return count;
   }
 
   public static void printBoard(int[][] mtx) {
     for(int i = 0; i < mtx.length; i++) {
-      for( int j = 0; j < mtx.length; j++) {
-        System.out.print(mtx[i][j] + " ");
+      for( int j = 0; j < mtx[i].length; j++) {
+        System.out.print(mtx[i][j]);
+        if(j != mtx[i].length-1) {
+          System.out.print(" ");
+        }
       }
+      System.out.println();
     }
-    System.out.println();
   }
 }
