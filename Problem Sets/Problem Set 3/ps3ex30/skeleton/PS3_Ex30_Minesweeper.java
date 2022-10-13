@@ -41,7 +41,6 @@ class Minesweeper {
     printBoard(output);
   }
 
-  // error here
   public static void playLevelTwo(Scanner sc) {
     System.out.println("Enter the " + 12 + " x " + 16 + " board:");
     char[][] mtx = new char[12][16]; //
