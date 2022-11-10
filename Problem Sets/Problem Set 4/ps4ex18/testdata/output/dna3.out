@@ -1,0 +1,3 @@
+Enter the number of DNA strings: Enter string 0: Enter string 1: The Hamming distance of pair 0 is: 3
+String 0 is not a rotation of any other string
+String 1 is not a rotation of any other string

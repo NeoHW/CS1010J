@@ -1,0 +1,15 @@
+Enter the number of DNA strings: Enter string 0: Enter string 1: Enter string 2: Enter string 3: Enter string 4: The Hamming distance of pair 0 is: 8
+The Hamming distance of pair 1 is: 7
+The Hamming distance of pair 2 is: 5
+The Hamming distance of pair 3 is: 7
+The Hamming distance of pair 4 is: 7
+The Hamming distance of pair 5 is: 9
+The Hamming distance of pair 6 is: 10
+The Hamming distance of pair 7 is: 7
+The Hamming distance of pair 8 is: 7
+The Hamming distance of pair 9 is: 6
+String 0 is a rotation of another string
+String 1 is a rotation of another string
+String 2 is not a rotation of any other string
+String 3 is not a rotation of any other string
+String 4 is not a rotation of any other string
